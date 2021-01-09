@@ -1,0 +1,67 @@
+{
+  "name": "@squidc/vite-crud",
+  "version": "0.0.1",
+  "description": "vite插件 layout解析器",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SquidC/squid-vite-layou.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SquidC/squid-vite-layou/issues"
+  },
+  "homepage": "https://github.com/SquidC/squid-vite-layou/blob/master/README.md",
+  "scripts": {
+    "wbuild": "tsc -w .",
+    "build": "tsc -p .",
+    "dev": "cd example && yarn dev"
+  },
+  "license": "ISC",
+  "lint-staged": {
+    "**/*.{js,ts,tsx,jsx,json}": [
+      "eslint --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "dependencies": {
+    "@vue/compiler-sfc": "^3.0.5"
+  },
+  "peerDependencies": {
+    "vite": ">=2.0.0-beta.5"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@squidc/element": "^0.0.12",
+    "@types/fs-extra": "^9.0.5",
+    "@types/hash-sum": "^1.0.0",
+    "@types/typescript": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.6.1",
+    "@typescript-eslint/parser": "^4.6.1",
+    "@vitejs/plugin-vue": "^1.0.4",
+    "@vitejs/plugin-vue-jsx": "^1.0.1",
+    "commitizen": "^4.2.2",
+    "conventional-changelog-cli": "^2.1.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.12.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-vue": "^7.1.0",
+    "hash-sum": "^2.0.0",
+    "husky": "^4.3.0",
+    "less": "^4.0.0",
+    "lint-staged": "^10.5.1",
+    "typescript": "^4.1.2",
+    "vite": "^2.0.0-beta.5",
+    "vue": "^3.0.5"
+  }
+}

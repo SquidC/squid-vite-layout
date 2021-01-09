@@ -1,0 +1,1 @@
+# squid-vite-crud
