@@ -40,8 +40,9 @@ function rewriteImports(imports: imports["imports"]) {
 export function layoutCompiler(raw: string, path: string): string {
   // 变成函数返回config
   raw = `(function() {${raw.replace("export default", "return")}})()`
+  const layoutName = raw.match(/layout: ['"](.*)['"]/) || ["", "DefaultLayout"]
   // 生成vue文件
-  const layout = layoutWrap("TestLayout", raw)
+  const layout = layoutWrap(layoutName[1], raw)
   // 编译vue
   let compileVue = getImport(
     genLayoutCompiler(
