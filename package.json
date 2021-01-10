@@ -9,14 +9,15 @@
   "publishConfig": {
     "access": "public"
   },
+  "keywords": ["vite", "layout", "vue-next"],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SquidC/squid-vite-layou.git"
+    "url": "git+https://github.com/SquidC/squid-vite-layout.git"
   },
   "bugs": {
-    "url": "https://github.com/SquidC/squid-vite-layou/issues"
+    "url": "https://github.com/SquidC/squid-vite-layout/issues"
   },
-  "homepage": "https://github.com/SquidC/squid-vite-layou/blob/master/README.md",
+  "homepage": "https://github.com/SquidC/squid-vite-layout/blob/master/README.md",
   "scripts": {
     "wbuild": "tsc -w .",
     "build": "tsc -p .",

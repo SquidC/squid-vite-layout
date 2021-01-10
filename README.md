@@ -1,4 +1,4 @@
-# squid-vite-crud
+# squid-vite-layout
 
 layout需要使用插件提供的[layout hooks](./plugin/types.ts)
 
@@ -9,7 +9,7 @@ layout需要使用插件提供的[layout hooks](./plugin/types.ts)
 vueJsx预编译jsx/tsx配置文件
 
 ```ts
-import vueLayout from "@squidc/vite-crud"
+import vueLayout from "@squidc/vite-layout"
 import vueJsx from "@vitejs/plugin-vue-jsx"
 export default {
   plugins: [
