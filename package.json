@@ -17,7 +17,8 @@
   "scripts": {
     "wbuild": "tsc -w .",
     "build": "tsc -p .",
-    "dev": "cd example && yarn dev"
+    "bootstrap": "yarn --frozen-lockfile && npx lerna bootstrap",
+    "dev": "cd playground && yarn dev"
   },
   "license": "ISC",
   "lint-staged": {
@@ -49,6 +50,7 @@
     "@vitejs/plugin-vue": "^1.0.4",
     "@vitejs/plugin-vue-jsx": "^1.0.1",
     "commitizen": "^4.2.2",
+    "lerna": "^3.22.1",
     "conventional-changelog-cli": "^2.1.1",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.12.1",

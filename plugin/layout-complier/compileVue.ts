@@ -1,5 +1,4 @@
-import { compileStyle, compileTemplate } from "@vue/compiler-sfc" 
-import hash from "hash-sum"
+import { compileTemplate } from "@vue/compiler-sfc" 
 
 type PreprocessLang = "less" | "sass" | "scss" | "styl" | "stylus";
 
@@ -43,39 +42,9 @@ function pad(source: string) {
     .join("\n")
 }
 
-/**
- * template正则式
- */
-const templateReplaceRegex = /<template>([\s\S]+)<\/template>/g
-
-
-function _compileStyle(
-  path: string,
-  scopeId: string,
-  style: string,
-  styleLang?: PreprocessLang
-) {
-  if (style) {
-    const compiledStyle = compileStyle({
-      source: style!,
-      filename: path,
-      id: scopeId+"-s",
-      scoped: true,
-      preprocessLang: styleLang,
-    })
-    style = [
-      `const id = "${path}?scope=${scopeId}"`,
-      `import.meta.hot = createHotContext(id);`,
-      `const css = ${JSON.stringify(compiledStyle.code)}`,
-      `updateStyle(id, css)`,
-      `import.meta.hot.accept()`,
-      `import.meta.hot.prune(() => removeStyle(id))`
-    ].join("\n")
-  }
-  return style
-}
-
 function _compileTemplate(path: string, source: string) {
+  const templateReplaceRegex = /<template>([\s\S]+)<\/template>/g
+
   // https://github.com/vuejs/vue-loader/blob/423b8341ab368c2117931e909e2da9af74503635/lib/loaders/templateLoader.js#L46
   if (templateReplaceRegex.test(source)) {
     source = source.replace(templateReplaceRegex, "$1")
@@ -110,10 +79,10 @@ function _compileScript(path: string, script: string) {
   script = script.trim()
   if (script) {
     script = script
-      .replace(/export\s+default/, "const democomponentExport =")
+      .replace(/export\s+default/, "const _sfc_main =")
       .replace(/import ({.*}) from 'vue'/g, (s, s1) => `const ${s1} = Vue`)
   } else {
-    script = "const democomponentExport = {}"
+    script = "const _sfc_main = {}"
   }
   return script
 }
@@ -124,46 +93,18 @@ function _compileScript(path: string, script: string) {
 export function genLayoutCompiler(
   path: string,
   template: string,
-  script: string,
-  style: string = "",
-  styleLang?: PreprocessLang) {
+  script: string) {
     
-  const scopeId = hash(path+template+script+style)
   template = _compileTemplate(path, template)
-  style = _compileStyle(path, scopeId, style, styleLang)
   script = _compileScript(path, script)
-
-  // 按照 element-demo${count} 分割script
-  let scripts = script.split("element-demo")
-  scripts.shift()
-  scripts = scripts.map(script => script.replace(/\d: ([\s\S]+),/, (s, s1)=> s1))
-
-  // 总页面编译成js
-  template = template.replace(/_component_element_demo\d+ = (.*)/g, (s, s1) => {
-    // 组件名称
-    const componentName = s1.match(/_resolveComponent\(\"(.*)\"\)/)[1]
-    // 引用vue代码
-    const functionComponent = 
-      scripts[componentName.match(/\d+/)[0]!] // 匹配代码
-        .replace(/import ({.*}) from ["']vue['"]/g, (s, s1) => {
-          if(s.includes("createVNode")){
-            s1 = s1.replace(/ as/g, ":") // 结构没有as
-            return `const ${s1} = Vue`
-          }
-          // 代码块内部引用
-          return `const ${s1} = Vue`
-        })
-
-    return s.replace(s1, functionComponent)
-  })
 
   // 返回渲染函数
   return [
     `import { updateStyle, removeStyle } from "/@vite/client";`,
-    `import * as Vue from 'vue';`,
-    `${template}`,
-    `const __script = { render };`,
-    `export default __script;`
+    `${template}`, // render
+    `${script}`, // scriptExport
+    `_sfc_main.render = render`,
+    `export default _sfc_main;`
   ].join("\n")
   
 }
