@@ -19,7 +19,7 @@ const pageConfig: LayoutConfig<any> = {
 
   },
   // 页面配置
-  colunms: [
+  columns: [
     {
       label: "hello",
       mode: ["add", "table"],

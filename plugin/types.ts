@@ -80,7 +80,7 @@ export interface LayoutConfig<T> {
     /**
      * 页面字段配置
     */
-    colunms: Array<T>;
+    columns: Array<T>;
     /**
      * 页面工具栏配置
     */
