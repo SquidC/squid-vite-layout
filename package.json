@@ -1,6 +1,6 @@
 {
   "name": "@squidc/vite-layout",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "vite插件 layout解析器",
   "main": "dist/index.js",
   "files": [
@@ -9,7 +9,11 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": ["vite", "layout", "vue-next"],
+  "keywords": [
+    "vite",
+    "layout",
+    "vue-next"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SquidC/squid-vite-layout.git"
@@ -20,7 +24,7 @@
   "homepage": "https://github.com/SquidC/squid-vite-layout/blob/master/README.md",
   "scripts": {
     "wbuild": "tsc -w .",
-    "build": "tsc -p .",
+    "build": "rimraf dist && tsc -p .",
     "dev": "cd playground && yarn dev"
   },
   "license": "ISC",
@@ -39,11 +43,12 @@
     "@vue/compiler-sfc": "^3.0.5"
   },
   "peerDependencies": {
-    "vite": ">=2.0.0-beta.5"
+    "vite": "^2.0.0-beta.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@types/node": "^14.14.20",
     "@types/typescript": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^4.6.1",
     "@typescript-eslint/parser": "^4.6.1",

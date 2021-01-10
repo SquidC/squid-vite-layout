@@ -13,17 +13,16 @@
     "jsx": "preserve",
     "target": "es2019",
     "lib": [
-      "ESNext",
-      "DOM"
+      "ESNext", "DOM"
     ],
     "allowSyntheticDefaultImports": true
   },
   "exclude": [
+    "dist",
     "node_modules",
   ],
   "include": [ 
-    "plugin",
-    "**/*.d.ts"
+    "plugin"
   ]
 }
  
