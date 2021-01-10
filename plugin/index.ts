@@ -24,3 +24,4 @@ export default function createVueMarkDownPlugin(): Plugin {
     },
   }
 }
+export * from "./types"

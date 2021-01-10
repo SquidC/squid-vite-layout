@@ -1,11 +1,14 @@
 {
-  "name": "@squidc/vite-crud",
+  "name": "@squidc/vite-layout",
   "version": "0.0.1",
   "description": "vite插件 layout解析器",
   "main": "dist/index.js",
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SquidC/squid-vite-layou.git"
@@ -17,7 +20,6 @@
   "scripts": {
     "wbuild": "tsc -w .",
     "build": "tsc -p .",
-    "bootstrap": "yarn --frozen-lockfile && npx lerna bootstrap",
     "dev": "cd playground && yarn dev"
   },
   "license": "ISC",
@@ -41,16 +43,12 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
-    "@squidc/element": "^0.0.12",
-    "@types/fs-extra": "^9.0.5",
-    "@types/hash-sum": "^1.0.0",
     "@types/typescript": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^4.6.1",
     "@typescript-eslint/parser": "^4.6.1",
     "@vitejs/plugin-vue": "^1.0.4",
     "@vitejs/plugin-vue-jsx": "^1.0.1",
     "commitizen": "^4.2.2",
-    "lerna": "^3.22.1",
     "conventional-changelog-cli": "^2.1.1",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.12.1",
@@ -58,7 +56,6 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-vue": "^7.1.0",
-    "hash-sum": "^2.0.0",
     "husky": "^4.3.0",
     "less": "^4.0.0",
     "lint-staged": "^10.5.1",
