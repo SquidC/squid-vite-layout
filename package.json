@@ -1,6 +1,6 @@
 {
   "name": "@squidc/vite-layout",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "vite插件 layout解析器",
   "main": "dist/index.js",
   "files": [
