@@ -1,7 +1,8 @@
 {
   "license": "ISC",
   "scripts": {
-    "dev": "vite"
+    "dev": "vite",
+    "build": "vite build"
   },
   "devDependencies": {
     "vite": "link:../node_modules/vite",

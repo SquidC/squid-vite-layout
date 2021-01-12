@@ -25,7 +25,8 @@
   "scripts": {
     "wbuild": "tsc -w .",
     "build": "rimraf dist && tsc -p .",
-    "dev": "cd playground && yarn dev"
+    "dev": "cd playground && yarn dev",
+    "build:dev": "cd playground && yarn build"
   },
   "license": "ISC",
   "lint-staged": {

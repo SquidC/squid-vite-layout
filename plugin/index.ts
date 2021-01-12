@@ -14,12 +14,12 @@ export default function createVueMarkDownPlugin(): Plugin {
   return {
     name: "vite-layout-compiler",
     // 使用vuejsx 编译之后才使用这个插件编译
-    enforce: "post",
     transform(raw, id) {
       const path = parseId(id)
       if (!path.endsWith(".layout.tsx")){
         return raw
       }
+      console.log(path)
       return layoutCompiler(raw, path)
     },
   }
