@@ -18,7 +18,7 @@ export interface LayoutConfig<ColumsType, ActionType, ServerAPI> {
     /**
      * 页面字段配置
     */
-    columns: Array<ColumsType>;
+    columns: ColumsType;
     /**
      * layout所有事件hooks
     */
